@@ -35,12 +35,14 @@ st.subheader('Transportation')
 
 option = st.selectbox(
      'How will we travel?',
-     ('Train', 'Car'))
+     ('Train', 'Car', 'No travel - staying in city'))
 
 if(option == "Train"):
     cost_of_transport = st.text_input('Cost of the ticket (two ways)', '150')
     cost_of_transport_on_site= st.text_input('Cost of transportation on site', '20')
     transport_total = int(cost_of_transport) + int(cost_of_transport_on_site)
+elif option == 'No travel - staying in city':
+    cost_of_transport = st.text_input('Cost of local tickets', '10')
 else:
     adv = st.checkbox('Advanced transport calculations')
     if not adv:
