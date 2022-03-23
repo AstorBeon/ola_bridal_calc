@@ -51,7 +51,7 @@ else:
         transport_total = int(cost_of_transport_fuel) + int(cost_of_transport_on_site)
     else:
         cost_of_transport_litres_per_100km = st.text_input('Litres of fuel 100km:', '10')
-        cost_of_transport_cost_of_litre = st.text_input("Cost of single litre(pln):", '7')
+        cost_of_transport_cost_of_litre = st.text_input("Cost of single litre:", '7')
         cost_of_transport_length = st.text_input('Length of whole route(km) - two ways:', '356')
         cost_of_transport_highway_fee = st.text_input('Cost of highway fees:', '20')
         cost_of_transport_on_site = st.text_input('Cost of transportation on site', '20')
@@ -69,7 +69,7 @@ else:
         </style>
         """, unsafe_allow_html=True)
 
-        st.markdown(f'<p class="big-font">Including {cost_of_transport_deviation}% deviation, total cost of transport is: ---> {transport_total + transport_total/float(cost_of_transport_deviation)}pln</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="big-font">Including {cost_of_transport_deviation}% deviation, total cost of transport is: ---> {transport_total + transport_total/float(cost_of_transport_deviation)}</p>', unsafe_allow_html=True)
 
 st.subheader('Accomodation')
 cost_of_accomodation = st.text_input('Cost of accomodation(total):', '220')
@@ -90,11 +90,11 @@ except Exception:
     accom_min,accom_max=int(cost_of_accomodation),int(cost_of_accomodation)
 if accomodation_total_deviation_calculation==0:
     st.markdown(
-        f'<p class="big-font">Total cost of transport is: ---> {cost_of_accomodation}pln</p>',
+        f'<p class="big-font">Total cost of transport is: ---> {cost_of_accomodation}</p>',
         unsafe_allow_html=True)
 else:
     st.markdown(
-        f'<p class="big-font">Including {cost_of_accomodation_deviation}% deviation, total cost of transport is between : ---> {int(cost_of_accomodation)-accomodation_total_deviation_calculation} and {int(cost_of_accomodation)+accomodation_total_deviation_calculation}pln</p>',
+        f'<p class="big-font">Including {cost_of_accomodation_deviation}% deviation, total cost of transport is between : ---> {int(cost_of_accomodation)-accomodation_total_deviation_calculation} and {int(cost_of_accomodation)+accomodation_total_deviation_calculation}</p>',
         unsafe_allow_html=True)
 
 
@@ -113,11 +113,11 @@ except Exception:
     foods_min,foods_max=total_cost_foods_drinks,total_cost_foods_drinks
 if foods_total_deviation_calculation==0:
     st.markdown(
-        f'<p class="big-font">Total cost of foods and drinks is: ---> {total_cost_foods_drinks}pln</p>',
+        f'<p class="big-font">Total cost of foods and drinks is: ---> {total_cost_foods_drinks}</p>',
         unsafe_allow_html=True)
 else:
     st.markdown(
-        f'<p class="big-font">Including {cost_of_food_deviation}% deviation, total cost of foods and drinks is between : ---> {int(total_cost_foods_drinks)-foods_total_deviation_calculation} and {int(total_cost_foods_drinks)+foods_total_deviation_calculation}pln</p>',
+        f'<p class="big-font">Including {cost_of_food_deviation}% deviation, total cost of foods and drinks is between : ---> {int(total_cost_foods_drinks)-foods_total_deviation_calculation} and {int(total_cost_foods_drinks)+foods_total_deviation_calculation}</p>',
         unsafe_allow_html=True)
 
 
@@ -186,7 +186,7 @@ def generate_knowledge_summary():
 
 
     except Exception:
-        knowledge_summary += f"{transport_total}pln<br>"
+        knowledge_summary += f"{transport_total}<br>"
         transport_min,transport_max = transport_total,transport_total
 
     knowledge_summary+=f"Accomodation -> "
@@ -205,9 +205,9 @@ def generate_knowledge_summary():
     else:
         knowledge_summary+=f"{total_cost_foods_drinks}<br>"
 
-    knowledge_summary+=f"Activities -> {activities_cost}pln:<br>"
+    knowledge_summary+=f"Activities -> {activities_cost}:<br>"
     for activity in st.session_state['activities']:
-        knowledge_summary += f"----{activity[0]} -> {activity[1]}pln<br>"
+        knowledge_summary += f"----{activity[0]} -> {activity[1]}<br>"
 
     #knowledge_summary+=f"Total for activities is: {activities_cost}"
     return knowledge_summary
@@ -235,7 +235,7 @@ max_costs*= 1 + float(addition_for_bride) / 100
 
 if (min_costs!=max_costs):
     st.markdown(
-        f'<p class="big-font-res">Total cost is between {round(min_costs,2)}pln and {round(max_costs,2)}</p>',
+        f'<p class="big-font-res">Total cost is between {round(min_costs,2)}  and {round(max_costs,2)} </p>',
         unsafe_allow_html=True)
 else:
     st.markdown(
@@ -292,7 +292,7 @@ elif max_costs>int(limit):
 # st.altair_chart(pie + text)
 #
 # st.markdown(
-#     f'<p class="big-font-res"><br>Total cost of your trip is {total_cost}pln</p>',
+#     f'<p class="big-font-res"><br>Total cost of your trip is {total_cost}</p>',
 #     unsafe_allow_html=True)
 #
 # initial=False
